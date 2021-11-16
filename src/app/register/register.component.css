@@ -1,0 +1,22 @@
+
+input.ng-untouched{
+    background-color:indigo;
+}
+input.ng-touched{
+    background-color: coral;
+}
+input.ng-pristine{
+    border: double 5px pink;
+}
+input.ng-dirty{
+    border: dashed 5px blue;
+}
+input.ng-valid{
+    border: green solid 4px;
+}
+input.ng-invalid{ 
+     border: red solid 4px;
+}
+.myColor{
+    color: red;
+}

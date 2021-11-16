@@ -1,0 +1,89 @@
+
+<form [formGroup]="registerForm" (submit)="registerFun()">
+     
+    <label for="name">Enter Name:</label>
+    <input type="text" id="name" formControlName="name"><br><br>
+    <div [ngClass]="{myColor:true}" *ngIf="fname.invalid && fname.touched">
+        <span *ngIf="fname.errors.required;else fnameelse"> 
+             <b>this field is required</b>
+            </span>
+        <ng-template #fnameelse>
+            <span *ngIf="fname.errors.pattern">
+                <b>Name should have only Alphabets</b>
+            </span>
+        </ng-template>
+    </div><br>
+    <label for="age">Enter age:</label>
+    <input type="number" id="age" formControlName="age"><br><br>
+    <div [ngClass]="{myColor:true}" *ngIf="uage.invalid && uage.touched">
+        <span *ngIf="uage.errors.required;else ageelsepart">
+            <b>this field is required</b>
+        </span>
+        <ng-template #ageelsepart>
+            <span *ngIf="uage.errors.min || uage.errors.max">
+                <b>Age should be in the range of 1  to 120</b>
+            </span>
+        </ng-template>
+    </div><br>
+    
+    <label for="mailid">Enter email:</label>
+    <input type="email" id="mailid" formControlName="emailId"><br><br>
+    <div [ngClass]="{myColor:true}" *ngIf="email.invalid && email.touched">
+        <span *ngIf="email.errors.required;else emailelse ">
+            <b >this is req</b>
+        </span>
+        <ng-template #emailelse>
+            <span *ngIf="email.errors.email">
+                <b>@and a part followed by @ must be in email</b>
+            </span>
+        </ng-template>
+    </div>
+    <br>
+    <label for="mobile">Enter mobile no:</label>
+    <input type="text" id="mobile" formControlName="mobileNumber"><br><br>
+    <div [ngClass]="{myColor:true}" *ngIf="mobile.invalid && mobile.touched">
+        <span *ngIf="mobile.errors.required;else mobileelsepart">
+            <b >this is req</b>
+        </span>
+            <ng-template #mobileelsepart>
+                <span *ngIf="mobile.errors.pattern;else ml2">
+                    <b>pattern only digit is allowed</b>
+                </span>
+                
+                <ng-template #ml2>
+                    <span *ngIf="mobile.errors.minlength || mobile.errors.maxlength">
+                        <b>min 10 max 11 digit only are allowed</b>
+                    </span>
+                </ng-template>
+            </ng-template>
+        </div><br>
+    <label for="uname">UserName:</label>
+    <input type="text" id="uname" formControlName="username"><br><br>
+    <div [ngClass]="{myColor:true}" *ngIf="usname.invalid && usname.touched">
+        <span *ngIf="usname.errors.required;else unameelse">
+            <b >this is req</b>
+        </span>
+            <ng-template #unameelse>
+                <span *ngIf="usname.errors.pattern">
+                    <b>pattern wrong</b>
+                </span>
+            </ng-template>
+        </div><br>
+    <label for="pass">Password:</label>
+    <input type="password" id="pass" formControlName="password"><br><br>
+    <div [ngClass]="{myColor:true}" *ngIf="uspassword.invalid && uspassword.touched">
+        <span *ngIf="uspassword.errors.required">
+            <b >this is req</b>
+        </span>
+    </div>
+    <label for="cpass"> confirm Password:</label>
+    <input type="password" id="cpass" formControlName="confirmPassword">
+    <div [ngClass]="{myColor:true}" *ngIf="cpassword.invalid && cpassword.touched">
+        <span *ngIf="cpassword.errors.required">
+            <b >this is req</b>
+        </span>
+    </div>
+    <br>
+    <input type="submit" value="Register">
+    <input type="reset" >
+</form>
